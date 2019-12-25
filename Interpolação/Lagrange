@@ -1,0 +1,27 @@
+import numpy as np
+import math
+import matplotlib.pyplot as plt
+from time import perf_counter
+from scipy import linalg
+from __future__ import division  
+from time import perf_counter
+from pylab import *
+import matplotlib.pyplot as plt
+import sympy
+from sympy import Symbol, Derivative, symbols
+
+def Lagrange(x, y, z):
+  t1_start = perf_counter()
+  n = len(x)
+  r = 0
+  for i in range(n):
+    c = 1
+    #d = 1
+    for j in range(n):
+      if i!=j:
+        c = c*((z - x[j])/(x[i] - x[j]))
+    r = r + (y[i] * c)
+  print("O valor de z interpolado é: ", r)
+  t1_stop = perf_counter()
+  print(t1_stop - t1_start)
+  return r
